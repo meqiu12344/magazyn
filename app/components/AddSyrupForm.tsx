@@ -2,6 +2,7 @@ import { ChangeEvent } from "react";
 
 export type SyrupFormState = {
   flavor: string;
+  ean: string;
   quantity: number;
 };
 
@@ -16,7 +17,7 @@ export default function AddSyrupForm({
   onChange,
   onSubmit,
 }: AddSyrupFormProps) {
-  const handleTextChange = (key: "flavor") =>
+  const handleTextChange = (key: "flavor" | "ean") =>
     (event: ChangeEvent<HTMLInputElement>) => {
       onChange({ ...value, [key]: event.target.value });
     };
@@ -43,6 +44,17 @@ export default function AddSyrupForm({
             onChange={handleTextChange("flavor")}
             className="mt-2 w-full rounded-2xl border border-zinc-200 bg-white/80 px-4 py-3 text-sm shadow-sm focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-200"
             placeholder="np. Marakuja"
+          />
+        </div>
+        <div>
+          <label className="text-xs font-semibold uppercase text-zinc-500">
+            Kod EAN-13
+          </label>
+          <input
+            value={value.ean}
+            onChange={handleTextChange("ean")}
+            className="mt-2 w-full rounded-2xl border border-zinc-200 bg-white/80 px-4 py-3 text-sm shadow-sm focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-200"
+            placeholder="np. 5901234123457"
           />
         </div>
         <div>

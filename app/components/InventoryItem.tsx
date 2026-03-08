@@ -1,6 +1,7 @@
 export type SyrupItem = {
   id: string;
   flavor: string;
+  ean: string;
   quantity: number;
 };
 
@@ -25,6 +26,9 @@ export default function InventoryItem({
         <div>
           <p className="text-lg font-semibold">{item.flavor}</p>
           <p className="mt-1 text-xs uppercase text-zinc-400">Butelka 0.5 L</p>
+          <p className="mt-1 text-xs text-zinc-500">
+            EAN: {item.ean || "Brak kodu"}
+          </p>
         </div>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
           <div className="rounded-2xl bg-white px-4 py-2 text-center shadow-sm sm:text-left">
